@@ -3,12 +3,15 @@
 <head>
   <meta charset="UTF-8" /> 
   <link rel="preload" href="/assets/images/background/1.webp" as="image" />
+  
   <!-- Viewport headers -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
   <!-- Cache headers -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"> 
   <meta http-equiv="Pragma" content="no-cache">
   <meta http-equiv="Expires" content="0">
+  
   <!-- Site description -->
   <meta name="description" content="Play free online games at HyperRush Games. Discover popular games in different categories, right in your browser!" />
   <title>The HyperRush Network | Free Online Games</title>
@@ -23,37 +26,320 @@
   <meta property="og:url" content="https://hyperrushnet.github.io/">
   <meta property="og:type" content="website">
 
-  <!-- Light mode favicon -->
+  <!-- Favicons -->
   <link rel="icon" href="/assets/images/favicon/000000.png" media="(prefers-color-scheme: light)">
-  <!-- Dark mode favicon -->
   <link rel="icon" href="/assets/images/favicon/ffffff.png" media="(prefers-color-scheme: dark)">  
+  
+  <!-- Stylesheets -->
   <link rel="stylesheet" href="/assets/css/dark.css?v=20250817" />
+  <link rel="stylesheet" href="/assets/css/enhanced.css?v=20250817" />
+  
+  <!-- Scripts -->
   <script src="/assets/js/main.js?v=20250817" defer></script>
   <script src="/assets/js/hrn-notifications.min.js?v=20250806" defer></script>
   <script src="/assets/js/notranslate.min.js?v=20250806"></script>
   <script src="/assets/js/pwa-installer.min.js?v=20250806"></script>
+  <script src="/assets/js/about-blank-cloaker.min.js?v=20250817" defer></script>
 </head>
 <body>
-  <div id="appWrapper">
-    <button id="menuToggle" aria-label="Open menu">
-      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true" focusable="false">
-        <path d="M4 6h16M4 12h16M4 18h16" stroke="white" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-    </button>
-
-    <div id="sidebar" aria-label="Sidebar">
-      <div id="searchWrapper">
-        <input id="searchInput" type="text" placeholder="Zoek spel..." aria-label="Zoek spel" />
-        <button id="searchBtn" aria-label="Zoek">
-          <img src="/assets/images/svg/search.svg" alt="Zoek" />
-        </button>
-      </div>
-      <nav id="categoryList" aria-label="Categorieën"></nav>
+  <div id="appWrapper" class="app-wrapper">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+      <div class="gradient-orb orb-1"></div>
+      <div class="gradient-orb orb-2"></div>
+      <div class="gradient-orb orb-3"></div>
+      <div class="noise"></div>
     </div>
 
-    <main id="content" role="main">
-      <div id="gameCardsContainer" aria-live="polite"></div>
+    <!-- Header -->
+    <header class="header">
+      <div class="header-content">
+        <button id="menuToggle" class="menu-toggle" aria-label="Open menu">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" aria-hidden="true" focusable="false">
+            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+
+        <div class="logo-section">
+          <h1 class="logo">🎮 HyperRush</h1>
+          <p class="tagline">Ultimate Gaming Portal</p>
+        </div>
+
+        <div class="header-actions">
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle theme">
+            <svg class="sun-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <button id="cloakBtn" class="cloak-btn" aria-label="Cloak to about:blank" title="Hide to about:blank">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 1s9 4 9 11-9 11-9 11S3 16 3 12 12 1 12 1z"></path>
+              <line x1="12" y1="9" x2="12" y2="15"></line>
+              <line x1="9" y1="12" x2="15" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sidebar -->
+    <div id="sidebar" class="sidebar" aria-label="Sidebar">
+      <div id="searchWrapper" class="search-wrapper">
+        <input id="searchInput" type="text" placeholder="Zoek spel..." aria-label="Zoek spel" class="search-input" />
+        <button id="searchBtn" class="search-btn" aria-label="Zoek">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <path d="m21 21-4.35-4.35"></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav id="categoryList" class="category-list" aria-label="Categorieën"></nav>
+
+      <div class="sidebar-footer">
+        <button id="toggleAboutBtn" class="about-toggle-btn" aria-label="About">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+          </svg>
+          About
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="content" class="content" role="main">
+      <!-- Featured Section -->
+      <section class="featured-section">
+        <div class="featured-header">
+          <h2>Featured Games</h2>
+          <span class="featured-indicator">⭐ Popular</span>
+        </div>
+        <div id="featuredCardsContainer" class="featured-cards" aria-live="polite"></div>
+      </section>
+
+      <!-- Game Grid -->
+      <section class="games-section">
+        <div class="games-header">
+          <h2 id="gamesTitle">All Games</h2>
+          <div class="view-toggle">
+            <button class="view-btn grid-view active" data-view="grid" aria-label="Grid view">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+              </svg>
+            </button>
+            <button class="view-btn list-view" data-view="list" aria-label="List view">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="8" y1="6" x2="21" y2="6"></line>
+                <line x1="8" y1="12" x2="21" y2="12"></line>
+                <line x1="8" y1="18" x2="21" y2="18"></line>
+                <line x1="3" y1="6" x2="3.01" y2="6"></line>
+                <line x1="3" y1="12" x2="3.01" y2="12"></line>
+                <line x1="3" y1="18" x2="3.01" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div id="gameCardsContainer" class="game-cards-container" aria-live="polite"></div>
+      </section>
+
+      <!-- Loading State -->
+      <div id="loadingIndicator" class="loading-indicator">
+        <div class="spinner"></div>
+        <p>Loading games...</p>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="empty-state" style="display: none;">
+        <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M8 12h8"></path>
+          <line x1="12" y1="8" x2="12" y2="8.01"></line>
+          <line x1="12" y1="16" x2="12" y2="16.01"></line>
+        </svg>
+        <h3>No games found</h3>
+        <p>Try adjusting your search or browse all categories</p>
+      </div>
     </main>
+
+    <!-- About Modal -->
+    <div id="aboutModal" class="modal" aria-hidden="true" role="dialog" aria-labelledby="aboutTitle">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+        <div class="modal-header">
+          <h2 id="aboutTitle">About HyperRush</h2>
+        </div>
+        <div class="modal-body">
+          <p>Welcome to <strong>HyperRush</strong> – your ultimate destination for free online gaming!</p>
+          
+          <h3>What We Offer</h3>
+          <ul>
+            <li>🎮 Hundreds of free games across multiple categories</li>
+            <li>🚀 Fast-loading, browser-based gameplay</li>
+            <li>🎨 Beautiful, modern interface</li>
+            <li>📱 Fully responsive on all devices</li>
+            <li>🔒 Privacy-focused gaming experience</li>
+          </ul>
+
+          <h3>Features</h3>
+          <ul>
+            <li><strong>Quick Hide:</strong> Press the cloak button to instantly hide to about:blank</li>
+            <li><strong>Advanced Search:</strong> Find your favorite games instantly</li>
+            <li><strong>Smart Categories:</strong> Games organized by type and difficulty</li>
+            <li><strong>Dark Mode:</strong> Easy on the eyes, anytime</li>
+          </ul>
+
+          <h3>How to Use</h3>
+          <ol>
+            <li>Browse categories from the sidebar</li>
+            <li>Search for specific games using the search bar</li>
+            <li>Click any game card to start playing</li>
+            <li>Use the cloak button if you need to hide quickly</li>
+          </ol>
+
+          <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">
+            HyperRush is designed for entertainment purposes. Play responsibly and enjoy! 🎉
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container" aria-live="polite" aria-atomic="true"></div>
   </div>
+
+  <script>
+    // About:blank Cloaker
+    window.cloakToBlank = function() {
+      const blank = window.open('about:blank', '_self');
+      if (blank) {
+        try {
+          blank.document.write('');
+          blank.document.close();
+        } catch(e) {}
+      }
+    };
+
+    // Cloak button handler
+    document.getElementById('cloakBtn').addEventListener('click', window.cloakToBlank);
+
+    // Keyboard shortcut for quick hide (Ctrl+Q or Cmd+Q)
+    document.addEventListener('keydown', function(e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'q') {
+        e.preventDefault();
+        window.cloakToBlank();
+      }
+    });
+
+    // Theme toggle
+    const themeToggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    
+    // Load saved theme preference
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    
+    themeToggle.addEventListener('click', function() {
+      const currentTheme = htmlElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      htmlElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+    });
+
+    // Modal functionality
+    const aboutModal = document.getElementById('aboutModal');
+    const toggleAboutBtn = document.getElementById('toggleAboutBtn');
+    const modalClose = document.querySelector('.modal-close');
+    const modalOverlay = document.querySelector('.modal-overlay');
+
+    function openAboutModal() {
+      aboutModal.setAttribute('aria-hidden', 'false');
+      aboutModal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAboutModal() {
+      aboutModal.setAttribute('aria-hidden', 'true');
+      aboutModal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    toggleAboutBtn.addEventListener('click', openAboutModal);
+    modalClose.addEventListener('click', closeAboutModal);
+    modalOverlay.addEventListener('click', closeAboutModal);
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && aboutModal.style.display === 'flex') {
+        closeAboutModal();
+      }
+    });
+
+    // View toggle
+    const viewBtns = document.querySelectorAll('.view-btn');
+    const gameCardsContainer = document.getElementById('gameCardsContainer');
+
+    viewBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        viewBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        gameCardsContainer.setAttribute('data-view', this.dataset.view);
+      });
+    });
+
+    // Menu toggle for mobile
+    const menuToggle = document.getElementById('menuToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    menuToggle.addEventListener('click', function() {
+      sidebar.classList.toggle('active');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+        sidebar.classList.remove('active');
+      }
+    });
+
+    // Toast notification
+    function showToast(message, duration = 3000) {
+      const toastContainer = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'toast';
+      toast.textContent = message;
+      toastContainer.appendChild(toast);
+
+      // Trigger animation
+      setTimeout(() => toast.classList.add('show'), 10);
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 300);
+      }, duration);
+    }
+  </script>
 </body>
 </html>
